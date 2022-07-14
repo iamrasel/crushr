@@ -16,16 +16,22 @@
 </div>
 
 ## Features
-- [x] Supports from Android 4.2 (SDK 17 JB)
+- [x] Supports from Android 6.0 (SDK 23 MM)
 - [x] Add, remove and edit task
-- [x] Copy task text
+  - [x] Copy or share task text
+  - [x] Quick tweet
+- [x] Pin task to notification area
+  - [x] Control task from notification panel
 - [x] Change primary and secondary color
-- [x] Built-in material colors to select from
-- [x] Custom color input
+  - [x] Built-in material colors to select from
+  - [x] Custom color input
+- [x] Reset configurations
 - [ ] See [TODO](#todo) section
 
 ## Screenshots
-<img src='assets/screenshots.png' alt='Screenshots' width='100%'>
+As per version 5 (14072022). Click on the image to enlarge it.
+
+<div align='center'><img src='assets/screens.png' alt='Screenshots' width='50%'></div>
 
 ## Download
 Currently, only one option is available for you to download this app, and it's Github release. This release version was built using Github's workflow, then I manually published the apk file as a release.
@@ -49,7 +55,6 @@ There's another option to get this app- fork and build it. This project is very 
   - Task text's size changing option
   - Task text's style changing option
   - Task text's font face changing option
-  - Pin important tasks to notification area
   
 ## Contributing
 If you want to contribute to this project, I would suggest you to start from the [TODO](#todo) list first. Then you can do whatever comes up to your mind.
@@ -57,7 +62,7 @@ If you want to contribute to this project, I would suggest you to start from the
 ## Credits
   **Project:** As you can see, this is a fork of [this](https://github.com/tjmolinski/crushr) same titled project, which was abandoned back in 2015. I found this app on [F-droid](https://f-droid.org/en/packages/com.tjm.crushr), used it and then decided to modify it to fulfill my needs. But then I thought, why not share it with others?
 
-  **Launcher Icon:** The tick sign on the launcher icon was collected from [Flaticon](https://www.flaticon.com/free-icons/check). Then I changed the color and flipped it horizontally.
+ **SVG Icons:** All the svg icons (including launcher icon) were collected from [SVG Repo](https://www.svgrepo.com/). Then I edited some icons according to the needs using [Method Draw Vector Editor](https://editor.method.ac/).
 
 ## License
 ```

@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/button_solid"
+    android:background="@drawable/btn_item"
     android:padding="16dp"
     android:id="@+id/container">
+
     <ImageView
         android:layout_width="3dp"
         android:layout_height="3dp"
-        android:src="@drawable/bullet"
+        android:src="@drawable/icon_bullet"
         android:layout_gravity="center"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         tools:ignore="ContentDescription"/>
 
     <TextView

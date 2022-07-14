@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_background"
+    android:background="@drawable/bg_dialog"
     android:layout_gravity="center_vertical"
     android:padding="16dp">
 
@@ -18,18 +17,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/manage_tasks"
+            android:text="@string/app_name"
             android:textColor="@android:color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="28sp"
+            android:fontFamily="cursive"
             tools:ignore="RelativeOverlap" />
+        
         <ImageView
             android:id="@+id/settings"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/settings"
+            android:src="@drawable/icon_settings"
             tools:ignore="ContentDescription"/>
 
     </RelativeLayout>
@@ -57,13 +56,15 @@
         android:id="@+id/new_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_bg"
-        android:hint="@string/new_task"
+        android:background="@drawable/bg_edittext"
+        android:hint="@string/type_here_hint"
         android:textColor="@android:color/black"
         android:layout_marginTop="16dp"
         android:padding="7dp"
         android:imeOptions="actionDone"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:autofillHints="@null"
+        android:inputType="text" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,13 +73,13 @@
         android:layout_marginTop="16dp"
         android:gravity="end">
         <Button
-            android:id="@+id/input_save"
+            android:id="@+id/save_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
             android:textAllCaps="true"
             android:layout_gravity="center"
-            android:background="@drawable/button_gradient"
+            android:background="@drawable/btn_pressed"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:gravity="center"
@@ -88,13 +89,13 @@
             style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
-            android:id="@+id/input_add"
+            android:id="@+id/add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add"
             android:textAllCaps="true"
             android:layout_gravity="center"
-            android:background="@drawable/button_gradient"
+            android:background="@drawable/btn_pressed"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
             android:gravity="center"

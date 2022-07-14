@@ -4,16 +4,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_background"
+    android:background="@drawable/bg_dialog"
     android:layout_gravity="center_vertical"
     android:padding="16dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:fontFamily="serif"
         android:text="@string/primary_color"
-        android:textColor="@android:color/black"
         android:textSize="22sp"
         android:textStyle="bold"/>
 
@@ -168,7 +168,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:background="@drawable/rounded_bg"
+            android:background="@drawable/bg_edittext"
             android:textColor="@android:color/black"
             android:padding="7dp"
             android:imeOptions="actionDone"
@@ -198,7 +198,7 @@
             android:layout_height="wrap_content"
             android:text="@android:string/cancel"
             android:layout_gravity="center"
-            android:background="@drawable/button_gradient"
+            android:background="@drawable/btn_pressed"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:gravity="center"
@@ -213,7 +213,7 @@
             android:layout_height="wrap_content"
             android:text="@android:string/ok"
             android:layout_gravity="center"
-            android:background="@drawable/button_gradient"
+            android:background="@drawable/btn_pressed"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
             android:gravity="center"

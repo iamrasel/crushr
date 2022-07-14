@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:layout_gravity="center"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_edittext"
+        android:maxLines="5"
+        android:padding="7dp"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical"
+        android:textColor="@android:color/holo_red_light"
+        android:autofillHints=""
+        android:inputType="text"
+        tools:ignore="LabelFor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/copy_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="12dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:src="@drawable/icon_copy"
+            android:background="@drawable/btn_pressed"
+            tools:ignore="ContentDescription"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/share_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="12dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:src="@drawable/icon_share"
+            android:background="@drawable/btn_pressed"
+            tools:ignore="ContentDescription"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/tweet_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="12dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:src="@drawable/icon_twitter"
+            android:background="@drawable/btn_pressed"
+            tools:ignore="ContentDescription"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/pin_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="12dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:src="@drawable/icon_pin"
+            android:background="@drawable/btn_pressed"
+            tools:ignore="ContentDescription"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_pressed"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:id="@+id/remove_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remove"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_pressed"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+
+</LinearLayout>

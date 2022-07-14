@@ -1,6 +1,5 @@
 package rasel.neo.crushr;
 
-import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,15 +14,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by cymak on 9/30/14.
- */
 @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
-public class crushrInputDialog extends Activity {
+public class NewTaskDialog extends AppCompatActivity {
 
     private EditText newTask;
     private ArrayList<String> tasks;
@@ -35,16 +33,21 @@ public class crushrInputDialog extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.crushr_input_dialog);
+        setContentView(R.layout.new_task_dialog);
 
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.85);
         int height = (int)(getResources().getDisplayMetrics().heightPixels*0.85);
         getWindow().setLayout(width, height);
 
+        if(getIntent().hasExtra("rasel.neo.crushr.ADD")) {
+            appWidgetId = getIntent().getExtras().getInt("id");
+        } else {
+            appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
+        }
+
         mContainerView = findViewById(R.id.container);
         newTask = findViewById(R.id.new_task);
         tasks = new ArrayList<>();
-        appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
 
         newTask.setOnEditorActionListener((v, actionId, event) -> {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
@@ -53,29 +56,29 @@ public class crushrInputDialog extends Activity {
             return true;
         });
 
-        SharedPreferences prefs = getSharedPreferences(crushrProvider.SHARED_PREF_TAG, MODE_PRIVATE);
-        Set<String> set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
+        SharedPreferences prefs = getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet(CrushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
         for(String item : set) {
             addItem(item);
         }
 
         findViewById(R.id.settings).setOnClickListener(v -> {
-            Intent configIntent = new Intent(getApplicationContext(), crushrConfigActivity.class);
+            Intent configIntent = new Intent(getApplicationContext(), ConfigActivity.class);
             configIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             startActivity(configIntent);
         });
 
-        findViewById(R.id.input_save).setOnClickListener(view -> {
-            PrefUtils.refreshListView(getApplicationContext(), appWidgetId);
+        findViewById(R.id.save_btn).setOnClickListener(view -> {
+            ExtraUtils.refreshListView(getApplicationContext(), appWidgetId);
             finish();
         });
 
-        findViewById(R.id.input_add).setOnClickListener(view -> affirmativeAction());
+        findViewById(R.id.add_btn).setOnClickListener(view -> affirmativeAction());
     }
 
     @Override
     public void onBackPressed() {
-        PrefUtils.refreshListView(getApplicationContext(), appWidgetId);
+        ExtraUtils.refreshListView(getApplicationContext(), appWidgetId);
         super.onBackPressed();
     }
 
@@ -88,7 +91,7 @@ public class crushrInputDialog extends Activity {
         newView.findViewById(R.id.crushr_delete).setOnClickListener(view -> {
             mContainerView.removeView(newView);
             tasks.remove(text);
-            PrefUtils.removeItem(getApplicationContext(), text, appWidgetId);
+            BaseUtils.removeItem(getApplicationContext(), text, appWidgetId);
         });
 
         tasks.add(text);
@@ -102,7 +105,7 @@ public class crushrInputDialog extends Activity {
         if(task.isEmpty()) {
             Toast.makeText(getApplicationContext(), getString(R.string.empty_task_error), Toast.LENGTH_SHORT).show();
         } else {
-            PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
+            BaseUtils.addItem(getApplicationContext(), task, appWidgetId);
             addItem(task);
         }
     }

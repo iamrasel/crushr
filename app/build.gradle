@@ -5,10 +5,10 @@ android {
 
     defaultConfig {
         applicationId "rasel.neo.crushr"
-        minSdkVersion 17
+        minSdkVersion 23
         targetSdkVersion 32
-        versionCode 4
-        versionName "05072022"
+        versionCode 5
+        versionName "14072022"
     }
 
     buildTypes {

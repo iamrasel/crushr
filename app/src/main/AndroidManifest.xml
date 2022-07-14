@@ -9,38 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
 
-        <activity android:name="rasel.neo.crushr.crushrConfigActivity"
+        <activity android:name="rasel.neo.crushr.ConfigActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="rasel.neo.crushr.crushrInputDialog"
+        <activity android:name="rasel.neo.crushr.NewTaskDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name="rasel.neo.crushr.crushrDeleteDialog"
+        <activity android:name="rasel.neo.crushr.SingleTaskDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name="rasel.neo.crushr.primaryColorDialog"
+        <activity android:name="rasel.neo.crushr.PrimaryColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name="rasel.neo.crushr.secondaryColorDialog"
+        <activity android:name="rasel.neo.crushr.SecondaryColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <receiver android:name="rasel.neo.crushr.crushrProvider"
+        <receiver android:name="rasel.neo.crushr.CrushrProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -50,8 +50,15 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
+        <receiver android:name=".NotificationReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
         <service
-            android:name="rasel.neo.crushr.crushrWidgetService"
+            android:name="rasel.neo.crushr.WidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 

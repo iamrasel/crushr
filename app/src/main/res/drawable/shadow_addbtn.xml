@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape android:shape="oval">
+        <shape android:shape="rectangle">
+            <corners android:bottomLeftRadius="180dp"
+                android:topLeftRadius="180dp"/>
             <gradient
                 android:type="radial"
-                android:gradientRadius="90"
+                android:gradientRadius="90dp"
                 android:startColor="#ee757575"
                 android:endColor="#00000000"/>
         </shape>

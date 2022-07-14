@@ -6,5 +6,5 @@
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="0"
     android:previewImage="@mipmap/ic_launcher"
-    android:configure="rasel.neo.crushr.crushrConfigActivity" >
+    android:configure="rasel.neo.crushr.ConfigActivity" >
 </appwidget-provider>

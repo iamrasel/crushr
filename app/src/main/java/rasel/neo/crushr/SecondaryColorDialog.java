@@ -1,11 +1,9 @@
 package rasel.neo.crushr;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,14 +15,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import java.util.Arrays;
 
-public class secondaryColorDialog extends Activity {
+public class SecondaryColorDialog extends AppCompatActivity {
 
     private RadioGroup mFirstSecondaryGroup;
     private RadioGroup mSecondSecondaryGroup;
     private EditText secondaryInputBox;
-    private Resources res;
     private boolean isChecking = true;
     private int appWidgetId;
 
@@ -44,7 +44,6 @@ public class secondaryColorDialog extends Activity {
         mFirstSecondaryGroup = findViewById(R.id.secondary_color_selector_first_row);
         mSecondSecondaryGroup = findViewById(R.id.secondary_color_selector_second_row);
         secondaryInputBox = findViewById(R.id.input_secondary);
-        res = getApplicationContext().getResources();
 
         mFirstSecondaryGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId != -1 && isChecking) {
@@ -61,9 +60,9 @@ public class secondaryColorDialog extends Activity {
             isChecking = true;
         });
 
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences(crushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
-        int secondaryColor = prefs.getInt(crushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, getApplicationContext().getResources().getColor(R.color.secondary_color_1));
-        String convertedArgb = PrefUtils.intColorToArgbString(secondaryColor);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        int secondaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_1));
+        String convertedArgb = ExtraUtils.intColorToArgbString(secondaryColor);
         secondaryInputBox.setText(convertedArgb);
         (findViewById(R.id.preview_secondary)).setBackgroundColor(secondaryColor);
 
@@ -86,7 +85,7 @@ public class secondaryColorDialog extends Activity {
                 View previewSecondary = findViewById(R.id.preview_secondary);
                 try{
                     if(secondaryColorStr.length() < 2) {
-                        previewSecondary.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
                     } else if((secondaryColorStr.length() == 7) || (secondaryColorStr.length() == 9)) {
                         previewSecondary.setBackgroundColor(Color.parseColor(secondaryColorStr));
                     } else if(secondaryColorStr.equalsIgnoreCase("#fff")) {
@@ -112,17 +111,17 @@ public class secondaryColorDialog extends Activity {
                 if(secondaryColorStr.length() < 2) {
                     Toast.makeText(getApplicationContext(), getString(R.string.no_change_toast), Toast.LENGTH_SHORT).show();
                 } else if((secondaryColorStr.length() == 7) || (secondaryColorStr.length() == 9)) {
-                    PrefUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr), appWidgetId);
+                    BaseUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr), appWidgetId);
                 } else if(secondaryColorStr.equalsIgnoreCase("#fff")) {
-                    PrefUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr + "fff"), appWidgetId);
+                    BaseUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr + "fff"), appWidgetId);
                 } else if(secondaryColorStr.equalsIgnoreCase("#000")) {
-                    PrefUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr + "000"), appWidgetId);
+                    BaseUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr + "000"), appWidgetId);
                 } else if((2 <= secondaryColorStr.length() && secondaryColorStr.length() < 7)) {
-                    PrefUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(String.format("%1$-" + 7 + "s", secondaryColorStr).replace(' ', '0')), appWidgetId);
+                    BaseUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(String.format("%1$-" + 7 + "s", secondaryColorStr).replace(' ', '0')), appWidgetId);
                 } else if(secondaryColorStr.length() == 8) {
-                    PrefUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr.substring(0, 7)), appWidgetId);
+                    BaseUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr.substring(0, 7)), appWidgetId);
                 } else if(secondaryColorStr.length() > 9) {
-                    PrefUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr.substring(0, 9)), appWidgetId);
+                    BaseUtils.setSecondaryColor(getApplicationContext(), Color.parseColor(secondaryColorStr.substring(0, 9)), appWidgetId);
                 }
             } catch(NumberFormatException ignored) {}
             finish();
@@ -130,29 +129,29 @@ public class secondaryColorDialog extends Activity {
     }
 
     private void loadColorSelections(int pColor) {
-        if (pColor == res.getColor(R.color.secondary_color_1)) {
+        if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_1)) {
             ((RadioButton) findViewById(R.id.secondary_color_1)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_2)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_2)) {
             ((RadioButton) findViewById(R.id.secondary_color_2)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_3)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_3)) {
             ((RadioButton) findViewById(R.id.secondary_color_3)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_4)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_4)) {
             ((RadioButton) findViewById(R.id.secondary_color_4)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_5)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_5)) {
             ((RadioButton) findViewById(R.id.secondary_color_5)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_6)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_6)) {
             ((RadioButton) findViewById(R.id.secondary_color_6)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_7)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_7)) {
             ((RadioButton) findViewById(R.id.secondary_color_7)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_8)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_8)) {
             ((RadioButton) findViewById(R.id.secondary_color_8)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_9)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_9)) {
             ((RadioButton) findViewById(R.id.secondary_color_9)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_10)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_10)) {
             ((RadioButton) findViewById(R.id.secondary_color_10)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_11)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_11)) {
             ((RadioButton) findViewById(R.id.secondary_color_11)).setChecked(true);
-        } else if (pColor == res.getColor(R.color.secondary_color_12)) {
+        } else if (pColor == ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_12)) {
             ((RadioButton) findViewById(R.id.secondary_color_12)).setChecked(true);
         }
     }
@@ -163,51 +162,51 @@ public class secondaryColorDialog extends Activity {
         switch(view.getId()) {
             case R.id.secondary_color_1:
                 secondaryInputBox.setText(getString(R.color.secondary_color_1));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_1));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_1));
                 break;
             case R.id.secondary_color_2:
                 secondaryInputBox.setText(getString(R.color.secondary_color_2));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_2));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_2));
                 break;
             case R.id.secondary_color_3:
                 secondaryInputBox.setText(getString(R.color.secondary_color_3));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_3));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_3));
                 break;
             case R.id.secondary_color_4:
                 secondaryInputBox.setText(getString(R.color.secondary_color_4));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_4));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_4));
                 break;
             case R.id.secondary_color_5:
                 secondaryInputBox.setText(getString(R.color.secondary_color_5));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_5));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_5));
                 break;
             case R.id.secondary_color_6:
                 secondaryInputBox.setText(getString(R.color.secondary_color_6));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_6));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_6));
                 break;
             case R.id.secondary_color_7:
                 secondaryInputBox.setText(getString(R.color.secondary_color_7));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_7));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_7));
                 break;
             case R.id.secondary_color_8:
                 secondaryInputBox.setText(getString(R.color.secondary_color_8));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_8));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_8));
                 break;
             case R.id.secondary_color_9:
                 secondaryInputBox.setText(getString(R.color.secondary_color_9));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_9));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_9));
                 break;
             case R.id.secondary_color_10:
                 secondaryInputBox.setText(getString(R.color.secondary_color_10));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_10));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_10));
                 break;
             case R.id.secondary_color_11:
                 secondaryInputBox.setText(getString(R.color.secondary_color_11));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_11));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_11));
                 break;
             case R.id.secondary_color_12:
                 secondaryInputBox.setText(getString(R.color.secondary_color_12));
-                previewSecondary.setBackgroundColor(res.getColor(R.color.secondary_color_12));
+                previewSecondary.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_12));
                 break;
         }
     }

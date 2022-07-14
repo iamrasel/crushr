@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_border">#ff888888</color>
-    <color name="copy_btn_bg">#11000000</color>
-    <color name="copy_btn_bg_pressed">#34000000</color>
-    <color name="pressed">#1f84ffff</color>
+    <color name="btn_pressed">#11000000</color>
 
     <!-- Primary color set -->
     <color name="primary_color_1">#80D8FF</color>

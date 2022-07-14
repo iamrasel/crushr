@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:padding="24dp">
+    android:background="@android:color/white">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/configs_title"
-        android:fontFamily="serif"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:gravity="center"
-        android:layout_marginBottom="40dp"/>
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="-1dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="28dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/configs_title"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/to_right"
+            android:paddingStart="25dp"
+            android:paddingEnd="36dp"
+            tools:ignore="RelativeOverlap" />
+
+        <ImageView
+            android:id="@+id/github_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_github"
+            android:background="@drawable/to_left"
+            android:clickable="true"
+            android:focusable="true"
+            android:foregroundGravity="center_vertical"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="36dp"
+            android:paddingEnd="25dp"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="24dp">
 
         <TextView
             android:id="@+id/primary_color_dialog"
@@ -27,18 +54,15 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="sans-serif-smallcaps"
+            android:paddingVertical="24dp"
             android:text="@string/primary_color"
             android:textColor="@android:color/black"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:padding="24dp"/>
+            android:textSize="22sp"/>
 
         <View
             android:id="@+id/primary_color_preview"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"/>
 
@@ -47,7 +71,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="24dp">
 
         <TextView
             android:id="@+id/secondary_color_dialog"
@@ -55,18 +80,15 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="sans-serif-smallcaps"
             android:text="@string/secondary_color"
             android:textColor="@android:color/black"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:padding="24dp"/>
+            android:paddingVertical="24dp"/>
 
         <View
             android:id="@+id/secondary_color_preview"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"/>
 
@@ -74,20 +96,36 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:layout_marginBottom="24dp"
+        android:layout_marginHorizontal="-1dp">
+
+        <ImageView
+            android:id="@+id/btn_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:src="@drawable/icon_reset"
+            android:background="@drawable/to_right"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="25dp"
+            android:paddingEnd="36dp"
+            android:contentDescription="@null" />
 
         <Button
             android:id="@+id/configs_apply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_gradient"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:paddingVertical="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:background="@drawable/to_left"
+            android:layout_alignParentEnd="true"
             android:text="@string/apply_configs"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:paddingStart="72dp"
+            android:paddingEnd="25dp"
+            style="?android:attr/buttonBarButtonStyle"
+            tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
 </LinearLayout>

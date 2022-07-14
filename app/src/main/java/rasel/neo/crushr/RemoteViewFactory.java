@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -14,19 +13,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by cymak on 9/24/14.
- */
-public class crushrRemoteViewFactory implements RemoteViewsService.RemoteViewsFactory {
+public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory {
 
     private final Context context;
     private final int appWidgetId;
     private final List<String> itemList = new ArrayList<>();
 
-    public crushrRemoteViewFactory(Context ctx, Intent intent) {
+    protected RemoteViewFactory(Context ctx, Intent intent) {
         context = ctx;
         appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
-        Log.d("AppWidgetId", String.valueOf(appWidgetId));
     }
 
     @Override
@@ -37,8 +32,8 @@ public class crushrRemoteViewFactory implements RemoteViewsService.RemoteViewsFa
     @Override
     public void onDataSetChanged() {
         itemList.clear();
-        SharedPreferences prefs = context.getSharedPreferences(crushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
-        Set<String> set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST + appWidgetId, new HashSet<>());
+        SharedPreferences prefs = context.getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet(CrushrProvider.SHARED_PREF_LIST + appWidgetId, new HashSet<>());
 
         Object[] list = set.toArray();
         for(Object item : list) {
@@ -63,7 +58,7 @@ public class crushrRemoteViewFactory implements RemoteViewsService.RemoteViewsFa
 
         Intent i = new Intent();
         Bundle extras = new Bundle();
-        extras.putString(crushrProvider.EXTRA_WORD, itemList.get(position));
+        extras.putString(CrushrProvider.EXTRA_WORD, itemList.get(position));
         extras.putInt(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         i.putExtras(extras);
         remoteView.setOnClickFillInIntent(R.id.container, i);

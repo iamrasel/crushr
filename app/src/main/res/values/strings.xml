@@ -4,16 +4,21 @@
     <string name="apply_configs">Apply new configs</string>
     <string name="color_hint">e.g. #AARRGGBB or #RRGGBB</string>
     <string name="configs_title">Configurations</string>
-    <string name="delete_task_message">Are you sure you want to remove the following task?</string>
-    <string name="delete_task_title">Delete Task</string>
     <string name="edit">Edit</string>
     <string name="empty_task_error">Please enter a task first</string>
-    <string name="empty_task_list">No task to crush!</string>
-    <string name="manage_tasks">Manage Tasks</string>
-    <string name="new_task">Input new task</string>
+    <string name="empty_task_hint">This too shall pass.</string>
+    <string name="github_url">https://github.com/iamrasel/crushr</string>
     <string name="no_change_toast">Nothing changed</string>
+    <string name="pinned_task">Pinned task</string>
     <string name="primary_color">Primary Color</string>
+    <string name="remove">Remove</string>
     <string name="save">Save</string>
     <string name="secondary_color">Secondary Color</string>
+    <string name="share">Share</string>
     <string name="text_copied_toast">Text copied to clipboard</string>
+    <string name="twitter_class">com.twitter.android.PostActivity</string>
+    <string name="twitter_package">com.twitter.android</string>
+    <string name="twitter_url">https://twitter.com/intent/tweet?text=</string>
+    <string name="type_here_hint">type here…</string>
+    <string name="unpin">Unpin</string>
 </resources>
